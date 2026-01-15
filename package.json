@@ -4,10 +4,14 @@
   "description": "��#\u0000 \u0000x\u0000p\u0000r\u0000s\u0000s\u0000_\u0000b\u0000e\u0000\r\u0000 \u0000",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev:nodemon": "cross-env NODE_ENV=development nodemon",
     "build": "rimraf dist && tsc",
-    "start": "node dist/server.js"
+    "start": "cross-env NODE_ENV=production node dist/server.js",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -29,7 +33,17 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.8",
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-boundaries": "^5.3.1",
+    "eslint-plugin-import": "^2.32.0",
+    "husky": "^9.1.7",
     "nodemon": "^3.1.11",
+    "prettier": "^3.7.4",
     "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
